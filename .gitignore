@@ -5,4 +5,5 @@ app/**/*.js
 app/**/*.js.map
 styles.css
 **/*.css.map
+app/**/*.css
 yarn.lock

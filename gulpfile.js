@@ -1,9 +1,12 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
+var bs = require('browser-sync').create('ci2a');
+
 
 var paths = {
   scssOrigin: 'styles.scss',
   scssApp: 'app/**/*.scss',
+  all: ['styles.css', 'app/**/*.css', 'app/**/*.js', 'app/**/*.html']
 };
 
 gulp.task('scssOrigin', function () {
@@ -28,13 +31,32 @@ gulp.task('scssApp', function () {
 
 gulp.task('scss', gulp.parallel('scssOrigin', 'scssApp'));
 
-var createWatchers = function () {
+var createWatchers = function (done) {
   var watchScssOrigin = gulp.watch(paths.scssOrigin);
   watchScssOrigin.on('all', gulp.series('scssOrigin'));
 
   var watchScssApp = gulp.watch(paths.scssApp);
   watchScssApp.on('all', gulp.series('scssApp'));
+
+  var watchAll = gulp.watch(paths.all);
+  watchAll.on('all', function () {
+    bs.reload();
+  })
+  done();
 };
 
 
-gulp.task('watch', gulp.parallel('scss', createWatchers));
+gulp.task('watch',
+  gulp.series(
+    gulp.parallel('scss', createWatchers),
+    function () {
+      var bsOptions = {
+        server: {
+          baseDir: ['.']
+        },
+        open: false
+      }
+      bs.init(bsOptions);
+    }
+  )
+);

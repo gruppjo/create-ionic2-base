@@ -4,13 +4,13 @@ var bs = require('browser-sync').create('ci2a');
 
 
 var paths = {
-  scssOrigin: 'styles.scss',
-  scssApp: 'app/**/*.scss',
-  all: ['styles.css', 'app/**/*.css', 'app/**/*.js', 'app/**/*.html']
+  scssOrigin: 'src/styles.scss',
+  scssApp: 'src/app/**/*.scss',
+  all: ['src/**/*.css', 'src/**/*.js', 'src/**/*.html']
 };
 
 gulp.task('scssOrigin', function () {
-  return gulp.src(paths.scssOrigin)
+  return gulp.src(paths.scssOrigin, { base: './' })
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({includePaths: ['node_modules/ionicons/dist/scss']}).on('error', $.sass.logError))
@@ -52,7 +52,7 @@ gulp.task('watch',
     function () {
       var bsOptions = {
         server: {
-          baseDir: ['.']
+          baseDir: ['./src', './node_modules']
         },
         open: false
       }

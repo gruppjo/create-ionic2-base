@@ -1,6 +1,6 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
-@import "node_modules/ionic-angular/themes/ionic.globals";
+@import "../node_modules/ionic-angular/themes/ionic.globals";
 
 
 // Shared Variables
@@ -60,10 +60,10 @@ $colors: (
 
 @charset "UTF-8";
 $ionic-theme: "Default";
-@import "node_modules/ionic-angular/themes/version";
-@import "node_modules/ionic-angular/themes/license";
-@import "node_modules/ionic-angular/themes/ionic.theme.default";
-@import "node_modules/ionic-angular/themes/ionic.components";
+@import "../node_modules/ionic-angular/themes/version";
+@import "../node_modules/ionic-angular/themes/license";
+@import "../node_modules/ionic-angular/themes/ionic.theme.default";
+@import "../node_modules/ionic-angular/themes/ionic.components";
 
 
 // Ionicons
@@ -73,5 +73,5 @@ $ionic-theme: "Default";
 
 
 
-$ionicons-font-path: "node_modules/ionicons/dist/fonts";
-@import "node_modules/ionicons/dist/scss/ionicons";
+$ionicons-font-path: "../node_modules/ionicons/dist/fonts";
+@import "../node_modules/ionicons/dist/scss/ionicons";

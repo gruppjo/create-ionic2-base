@@ -1,8 +1,7 @@
 node_modules
 typings
-app/**/*.js
-app/**/*.js.map
-styles.css
-**/*.css.map
-app/**/*.css
+src/app/**/*.js
+src/app/**/*.js.map
+src/**/*.css.map
+src/**/*.css
 yarn.lock

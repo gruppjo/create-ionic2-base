@@ -1,6 +1,5 @@
 node_modules
 typings
-.sass-cache
 app/**/*.js
 app/**/*.js.map
 styles.css

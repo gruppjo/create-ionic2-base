@@ -23,7 +23,7 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       // other libraries
       'ionic-angular': 'npm:ionic-angular/umd',
-      // 'ionic-native': 'npm:ionic-native/dist/es5/index.js',
+      'ionic-native': 'npm:ionic-native/dist/es5',
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
     },
@@ -43,6 +43,10 @@
       'ionic-angular': {
         main: './index.js',
         defaultExtension: 'js'
+      },
+      'ionic-native': {
+        main: './index.js',
+        defaultExtensions: 'js'
       }
     }
   });

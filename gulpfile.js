@@ -52,7 +52,7 @@ gulp.task('watch',
     function () {
       var bsOptions = {
         server: {
-          baseDir: ['./src', './node_modules']
+          baseDir: ['./src', '.']
         },
         open: false
       }

@@ -7,7 +7,10 @@
     "postinstall": "typings install",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "typings": "typings"
+    "typings": "typings",
+    "build:bundle": "rollup -c rollup.config.js && tsc --out src/app/public/bundle.js --target es5 --allowJs src/app/public/bundle.es2015.js",
+    "build:vendor": "rollup -c rollup.config.vendor.js && tsc --out src/app/public/vendor.js --target es5 --allowJs src/app/public/vendor.es2015.js",
+    "build": "npm run build:bundle && npm run build:vendor"
   },
   "licenses": [
     {
@@ -33,6 +36,7 @@
     "ionicons": "^3.0.0",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.0-beta.12",
+    "rxjs-es": "^5.0.0-beta.12",
     "systemjs": "0.19.39",
     "zone.js": "^0.6.25"
   },
@@ -46,6 +50,10 @@
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^2.2.0",
     "lite-server": "^2.2.2",
+    "rollup": "^0.36.3",
+    "rollup-plugin-alias": "^1.2.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-typescript": "^0.8.1",
     "typescript": "^2.0.3",
     "typings": "^1.4.0"
   }

@@ -4,4 +4,7 @@ src/app/**/*.js
 src/app/**/*.js.map
 src/**/*.css.map
 src/**/*.css
+!src/app/public/vendor.ts
+src/app/public/
+www/
 yarn.lock

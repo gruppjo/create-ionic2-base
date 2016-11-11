@@ -24,8 +24,7 @@
       // other libraries
       'ionic-angular': 'npm:ionic-angular/umd',
       'ionic-native': 'npm:ionic-native/dist/es5',
-      'rxjs':                      'npm:rxjs',
-      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
+      'rxjs':                      'npm:rxjs'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -34,10 +33,6 @@
         defaultExtension: 'js'
       },
       rxjs: {
-        defaultExtension: 'js'
-      },
-      'angular-in-memory-web-api': {
-        main: './index.js',
         defaultExtension: 'js'
       },
       'ionic-angular': {

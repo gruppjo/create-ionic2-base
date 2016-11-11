@@ -1,12 +1,13 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var bs = require('browser-sync').create('ci2a');
-
+var Builder = require('systemjs-builder');
 
 var paths = {
   scssOrigin: 'src/styles.scss',
   scssApp: 'src/app/**/*.scss',
-  all: ['src/**/*.css', 'src/**/*.js', 'src/**/*.html']
+  all: ['src/**/*.css', 'src/**/*.js', 'src/**/*.html'],
+  dist: 'www'
 };
 
 gulp.task('scssOrigin', function () {
@@ -44,6 +45,52 @@ var createWatchers = function (done) {
   })
   done();
 };
+
+gulp.task('static.css', gulp.series('scss', function () {
+  return gulp.src('src/styles.css')
+    .pipe(gulp.dest(paths.dist));
+}));
+gulp.task('static.components', function () {
+  return gulp.src('src/app/**/*.{html,css}')
+    .pipe(gulp.dest(paths.dist));
+});
+
+gulp.task('build.static', gulp.series('scss', gulp.parallel('static.css', 'static.components')));
+
+gulp.task('build.js', function buildSJS (done) {
+  var builderConf = {
+    normalize: true,
+    minify: true,
+    mangle: true,
+    runtime: false,
+    globalDefs: {
+        DEBUG: false,
+        ENV: 'production'
+    }
+  };
+
+  var builder = new Builder();
+  builder.loadConfig('./src/systemjs.config.js')
+  .then(function() {
+    return builder
+      .buildStatic(
+        './src/app/main.js',
+        paths.dist + '/bundle.js',
+        builderConf);
+  })
+  .then(function(output) {
+    console.log(output.inlineMap);
+    console.log('Build complete');
+    done();
+  })
+  .catch(function (ex) {
+    console.log('Build failed', ex);
+    done('Build failed.');
+  });
+});
+
+gulp.task('build', gulp.parallel('build.static', 'build.js'));
+
 
 
 gulp.task('watch',

@@ -6,4 +6,8 @@ src/app/**/*.js.map
 src/**/*.css.map
 src/**/*.css
 
+# build
+www/*
+!www/index.html
+
 yarn.lock

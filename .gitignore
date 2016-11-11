@@ -1,7 +1,9 @@
 node_modules
-typings
+
+# temporary files
 src/app/**/*.js
 src/app/**/*.js.map
 src/**/*.css.map
 src/**/*.css
+
 yarn.lock
